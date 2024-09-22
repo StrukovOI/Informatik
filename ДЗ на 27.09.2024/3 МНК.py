@@ -3,9 +3,9 @@ def MNK():
     y=input('Введите значения y разделяя их пробелами\n').split()
     if len(x)==len(y):
         for i in range(len(x)):
-            x[i]=int(x[i])
+            x[i]=float(x[i])
         for i in range(len(y)):
-            y[i]=int(y[i])
+            y[i]=float(y[i])
         
         a1=0
         a2=sum(x)*sum(y)
