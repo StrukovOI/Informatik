@@ -1,17 +1,23 @@
 k=int(input("Введите количество людей:\n"))
-n=int(input("Введите количество пар dislikes:\n"))
+n=input("Введите массив dislikes:\n").split(',')
 graph={}
+m=[]
 
-for i in range(n):
-    dis=list(map(int, input().split()))
-    if graph.get(dis[0], False) is False:
-        graph[dis[0]] = [dis[1]]
+for i in n:
+    el=''
+    for j in i:
+        if j.isdigit():
+            el=el+j
+    m.append(int(el))
+
+for i in range(len(m)//2):
+    if graph.get(m[i*2], False) is False:
+        graph[m[i*2]] = [m[i*2+1]]
     else:
-        graph[dis[0]].append(dis[1])
+        graph[m[i*2]].append(m[i*2+1])
 for i in range(1, k+1):
     if graph.get(i, False) is False:
-        graph[i] = []
-
+        graph[i] = [i]
 
 def is_bipartite_dfs(graph, node, colors=None, color=0):
     if colors is None:
